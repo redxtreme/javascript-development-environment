@@ -11,13 +11,13 @@ describe('Our first test', () => {
 describe('index.html', () => {
 
 	// async test because evaluation is in a callback
-	it('should say hello', (done) => {
+	it('should have h1 that says Users', (done) => {
 		const index = fs.readFileSync('./src/index.html', 'utf-8');
 		jsdom.env(index, function(err, window) {
 			// callback test, needs async to work
 
 			const h1 = window.document.getElementsByTagName('h1')[0]; // first h1 on the page
-			expect(h1.innerHTML).to.equal('Hello World!');
+			expect(h1.innerHTML).to.equal('Users');
 			done();
 			window.close();
 		}); // can pass JavaScript files to load into jsdom in second param
