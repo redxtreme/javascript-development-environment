@@ -1,11 +1,13 @@
 /*
-Switches to the mockapi if we are in development
+	Switches to the mockapi if we are in development
 */
 export default function getBaseUrl() {
-	console.log(getQueryStringParameterByName('useMockApi'));
 	return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : '/';
 }
 
+/*
+	Get the parameter passed in the url
+*/
 function getQueryStringParameterByName(name, url) {
 	if (!url) url = window.location.href;
 	name = name.replace(/[\[\]]/g, "\\$&");
