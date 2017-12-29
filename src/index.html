@@ -1,10 +1,28 @@
+<!--
+	**NOTE:** This is a template for index.html.
+	It uses ejs and htmlWebpackPlugin to generate a different index.hmtl for each environment.
+	htmlWebpackPlugin will dynamically add references to the scripts and styles that it bundles
+	to this file. The gerated bundles have hash-based filenames,
+	so it's necessary to add the references dynamically.
+	For more info on ejs, see http://www.embeddedjs.com/.
+	For examples of using it with htmlWebpackPlugin,
+	see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+	-The source for this boilerplate is: https://github.com/coryhouse/javascript-development-environment
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
 </head>
 <body>
-  <h1>Users</h1>
+	<% if (htmlWebpackPlugin.options.injectedText) { %>
+		<!-- BEGIN INJECTED TEXT EJS -->
+		<script type='text/javascript'>
+			console.log('<%=htmlWebpackPlugin.options.injectedText%>');
+		</script>
+		<!-- END INJECTED TEXT EJS -->
+		<% } %>
+		<h1>Users</h1>
 		<table>
 			<thead>
 				<th>&nbsp;</th>
@@ -14,8 +32,7 @@
 				<th>Email</th>
 			</thead>
 			<tbody id="users">
-
 			</tbody>
 		</table>
-</body>
-</html>
+	</body>
+	</html>
